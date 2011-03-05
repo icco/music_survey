@@ -42,7 +42,14 @@ post '/' do
 end
 
 get '/stats' do
-   erb :stats, :locals => { :entries => Entry.all }
+   entries = Entry.all
+   songs = Hash.new
+   entries.each {|entry|
+      songs[entry.songname] = Array.new if songs[entry.songname].nil?
+      songs[entry.songname].push entry.mood
+   }
+
+   erb :stats, :locals => { :entries => songs }
 end
 
 get '/style.css' do
