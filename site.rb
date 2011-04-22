@@ -2,22 +2,10 @@
 # An app for displaying one's resume
 # @author Nat Welch - https://github.com/icco/Resume
 
-begin
-   require "rubygems"
-rescue LoadError
-   puts "Please install Ruby Gems to continue."
-   exit
-end
+require "rubygems"
+require "bundler/setup"
 
-# Check all of the gems we need are there.
-[ "sinatra", "less", "sequel" ].each {|gem|
-   begin
-      require gem
-   rescue LoadError
-      puts "The gem #{gem} is not installed.\n"
-      exit
-   end
-}
+Bundler.require(:default)
 
 configure do
    set :sessions, true
