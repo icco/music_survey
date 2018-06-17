@@ -1,6 +1,6 @@
 source :rubygems
 
-gem "sinatra"
+gem "sinatra", ">= 2.0.2"
 gem "less"
 gem "sequel"
 gem "sqlite3"
